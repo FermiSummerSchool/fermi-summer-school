@@ -1,8 +1,8 @@
 <?xml version="1.0" ?>
 <source_library title="source library" xmlns="http://fermi.gsfc.nasa.gov/source_library">
 
-<source name="iso_p7v6source" type="DiffuseSource">
-<spectrum file="iso_p7v6source.txt" type="FileFunction">
+<source name="iso_source_v05" type="DiffuseSource">
+<spectrum file="iso_source_v05.txt" type="FileFunction">
 <parameter free="1" max="1000" min="1e-05" name="Normalization" scale="1" value="1" />
 </spectrum>
 <spatialModel type="ConstantValue">
@@ -10,11 +10,11 @@
 </spatialModel>
 </source>
 
-<source name="gal_2yearp7v6_v0" type="DiffuseSource">
+<source name="gll_iem_v05_rev1" type="DiffuseSource">
 <spectrum type="ConstantValue">
 <parameter free="1" max="10.0" min="0.0" name="Value" scale="1.0" value= "1.0"/>
 </spectrum>
-<spatialModel file="gal_2yearp7v6_v0.fits" type="MapCubeFunction">
+<spatialModel file="gll_iem_v05_rev1.fit" type="MapCubeFunction">
 <parameter free="0" max="1000.0" min="0.001" name="Normalization" scale= "1.0" value="1.0"/>
 </spatialModel>
 </source>
