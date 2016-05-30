@@ -1,21 +1,21 @@
 <?xml version="1.0" ?>
 <source_library title="source library" xmlns="http://fermi.gsfc.nasa.gov/source_library">
-  <source name="iso_source_v05" type="DiffuseSource">
-    <spectrum file="data/iso_source_v05.txt" type="FileFunction">
-      <parameter free="true" max="1000.0" min="1e-05" name="Normalization" scale="1.0" value="1.0"/>
+<source name="iso_P8R2_SOURCE_V6_v06.txt" type="DiffuseSource">
+    <spectrum file="data/iso_P8R2_SOURCE_V6_v06.txt" type="FileFunction">
+        <parameter free="1" max="1000" min="1e-05" name="Normalization" scale="1" value="1" />
     </spectrum>
     <spatialModel type="ConstantValue">
-      <parameter free="false" max="10.0" min="0.0" name="Value" scale="1.0" value="1.0"/>
+        <parameter free="0" max="10.0" min="0.0" name="Value" scale="1.0" value="1.0"/>
     </spatialModel>
-  </source>
-  <source name="gll_iem_v05_rev1" type="DiffuseSource">
+</source>
+<source name="gll_iem_v06" type="DiffuseSource">
     <spectrum type="ConstantValue">
-      <parameter free="true" max="10.0" min="0.0" name="Value" scale="1.0" value="1.0"/>
+        <parameter free="1" max="10.0" min="0.0" name="Value" scale="1.0" value= "1.0"/>
     </spectrum>
-    <spatialModel file="data/gll_iem_v05_rev1.fit" type="MapCubeFunction">
-      <parameter free="false" max="1000.0" min="0.001" name="Normalization" scale="1.0" value="1.0"/>
+    <spatialModel file="data/gll_iem_v06.fit" type="MapCubeFunction">
+        <parameter free="0" max="1000.0" min="0.001" name="Normalization" scale= "1.0" value="1.0"/>
     </spatialModel>
-  </source>
+</source>
   <source name="3C 273" type="PointSource">
     <spectrum type="PowerLaw">
       <parameter free="true" max="1000.0" min="0.001" name="Prefactor" scale="1e-09" value="10.0"/>
