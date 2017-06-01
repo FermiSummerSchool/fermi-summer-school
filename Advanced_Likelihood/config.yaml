@@ -1,0 +1,39 @@
+data:
+  evfile : events.txt
+  scfile : SC00.fits
+
+binning:
+  roiwidth   : 15.0
+  binsz      : 0.1
+  binsperdec : 8
+
+selection :
+  emin : 100
+  emax : 100000
+  zmax    : 100
+  evclass : 128
+  evtype  : 3
+  tmin    : 239557417
+  tmax    : 255398400
+  filter  : null
+  target : '3C 279'
+
+gtlike:
+  edisp : True
+  irfs : 'P8R2_SOURCE_V6'
+  edisp_disable : ['isodiff','galdiff']
+
+model:
+  src_roiwidth : 20.0
+  galdiff  : '/vagrant/gll_iem_v06.fits'
+  isodiff  : 'iso_P8R2_SOURCE_V6_v06.txt'
+  catalogs : ['3FGL']
+
+components:
+  - { selection : { evtype : 4  } } # PSF0
+  - { selection : { evtype : 8  } } # PSF1
+  - { selection : { evtype : 16 } } # PSF2
+  - { selection : { evtype : 32 } } # PSF3
+
+fileio:
+   outdir : data
