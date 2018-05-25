@@ -5,7 +5,7 @@ Fermi Summer School Documents and Files
 
 These notebooks and talks should be followed following the schedule:
 
-https://confluence.slac.stanford.edu/display/LSP/Fermi+Summer+School+2017
+https://confluence.slac.stanford.edu/display/LSP/Fermi+Summer+School+2018
 
 You can also find all of the past summer school schedules here:
 
