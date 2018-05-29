@@ -28,11 +28,12 @@
       <parameter free="0" max="1" min="-1" name="Index" scale="-1" value="0" />
       <parameter free="0" max="1000" min="1000" name="Scale" scale="1" value="1000" />
     </spectrum>
-    <spatialModel file="/vagrant/gll_iem_v06.fits" type="MapCubeFunction">
+    <spatialModel file="/home/fermi//astrosoft/sciencetools/x86_64-unknown-linux-gnu-libc2.12/refdata/fermi/galdiffuse/gll_iem_v06.fits" type="MapCubeFunction">
       <parameter free="0" max="1000" min="0.001" name="Normalization" scale="1" value="1" />
     </spatialModel>
   </source>
-  <source name="iso_P8R2_SOURCE_V6_v06" type="DiffuseSource">
+  <source name="/home/fermi//astrosoft/sciencetools/x86_64-unknown-linux-gnu-libc2.12/refdata\
+/fermi/galdiffuse/iso_P8R2_SOURCE_V6_v06" type="DiffuseSource">
     <spectrum file="/vagrant/iso_P8R2_SOURCE_V6_v06.txt" type="FileFunction">
       <parameter error="0.0344301447" free="1" max="1000" min="1e-05" name="Normalization" scale="1" value="1.426205091" />
     </spectrum>
