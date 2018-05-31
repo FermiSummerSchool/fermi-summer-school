@@ -25,7 +25,7 @@ gtlike:
 
 model:
   src_roiwidth : 20.0
-  galdiff  : '/data/gll_iem_v06.fits'
+  galdiff  : '/data/fermi-summer-school/data/gll_iem_v06.fits'
   isodiff  : 'iso_P8R2_SOURCE_V6_v06.txt'
   catalogs : ['3FGL']
 

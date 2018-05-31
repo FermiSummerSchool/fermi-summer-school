@@ -1,1 +1,1 @@
-data/PH00.fits
+../data/PH00.fits
