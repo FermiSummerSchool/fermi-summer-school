@@ -24,9 +24,9 @@ gtlike:
 
 model:
   src_roiwidth : 20.0
-  galdiff  : '$(CONDA_PREFIX)/share/fermitools/refdata/fermi/galdiffuse/gll_iem_v07.fits'
+  galdiff  : '$CONDA_PREFIX/share/fermitools/refdata/fermi/galdiffuse/gll_iem_v07.fits'
   isodiff  : 'iso_P8R3_SOURCE_V2_v1.txt'
-  catalogs : ['4FGL']
+  catalogs : ['FL8Y']
 
 components:
   - { selection : { evtype : 4  } } # PSF0
