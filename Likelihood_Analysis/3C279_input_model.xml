@@ -1,20 +1,20 @@
 <?xml version="1.0" ?>
 <source_library title="source library" xmlns="http://fermi.gsfc.nasa.gov/source_library">
-<source name="iso_P8R2_SOURCE_V6_v06" type="DiffuseSource">
-    <spectrum file="../data/iso_P8R2_SOURCE_V6_v06.txt" type="FileFunction">
+<source name="iso_P8R3_SOURCE_V2" type="DiffuseSource">
+    <spectrum file="/opt/anaconda/envs/fermi/share/fermitools/refdata/fermi/galdiffuse/iso_P8R3_SOURCE_V2.txt" type="FileFunction">
         <parameter free="0" max="1000" min="1e-05" name="Normalization" scale="1" value="1" />
     </spectrum>
     <spatialModel type="ConstantValue">
         <parameter free="0" max="10.0" min="0.0" name="Value" scale="1.0" value="1.0"/>
     </spatialModel>
 </source>
-<source name="gll_iem_v06" type="DiffuseSource">
+<source name="gll_iem_v07" type="DiffuseSource">
     <spectrum type="PowerLaw">
       <parameter free="0" max="1.0" min="-1.0" name="Index" scale="-1.0" value="0.0"/>
       <parameter free="0" max="1000.0" min="1000.0" name="Scale" scale="1.0" value="1000.0"/>
       <parameter free="0" max="10.0" min="0.1" name="Prefactor" scale="1.0" value="1.0"/>
     </spectrum>
-    <spatialModel file="../data/gll_iem_v06.fits" type="MapCubeFunction">
+    <spatialModel file="/opt/anaconda/envs/fermi/share/fermitools/refdata/fermi/galdiffuse/gll_iem_v07.fits" type="MapCubeFunction">
         <parameter free="0" max="1000.0" min="0.001" name="Normalization" scale= "1.0" value="1.0"/>
     </spatialModel>
 </source>
