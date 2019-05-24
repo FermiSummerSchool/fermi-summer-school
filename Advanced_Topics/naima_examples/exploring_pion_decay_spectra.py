@@ -30,7 +30,7 @@ protonsCutoff = ExponentialCutoffPowerLaw( amplitude = 1.0/u.eV,
 #energies at which we want to evaluate the spectrum
 Eprotons = np.logspace(-1, 6, 100) * u.GeV
 
-get_ipython().magic(u'matplotlib inline')
+#get_ipython().magic(u'matplotlib inline')
 
 plt.loglog(Eprotons, protonsPL(Eprotons), label="Proton spectrum (PL)")
 plt.loglog(Eprotons, protonsCutoff(Eprotons), label="Proton spectrum (PL * Cutoff)")
@@ -38,6 +38,7 @@ plt.ylabel("Proton spectrum dN/dE [1/eV]")
 plt.xlabel("Proton energy [GeV]")
 plt.legend()
 
+plt.savefig("ProtonSpectrum.png" )
 
 # In[35]:
 
@@ -82,14 +83,14 @@ Egamma = np.logspace(-2, 5, 100) * u.GeV
 #source distance
 D=2*u.kpc
 
-get_ipython().magic(u'matplotlib inline')
-
+#get_ipython().magic(u'matplotlib inline')
+plt.clf()
 plt.loglog(Egamma, pionsPL.flux(Egamma, distance=D), label="Pion decay spectrum (PL protons)")
 plt.loglog(Egamma, pionsCutoff.flux(Egamma, distance=D), label="Pion decay spectrum (Cutoff protons)")
 plt.ylabel("Pion decay spectrum dN/dE [1/eV/cm^2/s]")
 plt.xlabel("Pion decay energy [GeV]")
 plt.legend()
-
+plt.savefig("PionDecayFlux.png" )
 
 # In[49]:
 
@@ -102,14 +103,15 @@ Egamma = np.logspace(-2, 5, 100) * u.GeV
 #source distance
 D=2*u.kpc
 
-get_ipython().magic(u'matplotlib inline')
-
+#get_ipython().magic(u'matplotlib inline')
+plt.clf()
 plt.loglog(Egamma, pionsPL.sed(Egamma, distance=D), label="Pion decay spectrum (PL protons)")
 plt.loglog(Egamma, pionsCutoff.sed(Egamma, distance=D), label="Pion decay spectrum (Cutoff protons)")
 plt.ylabel("Pion decay SED E^2 dN/dE [erg/cm^2/s]")
 plt.xlabel("Pion decay energy [GeV]")
 plt.legend()
 
+plt.savefig("PionDecaySED.png" )
 
 # In[ ]:
 

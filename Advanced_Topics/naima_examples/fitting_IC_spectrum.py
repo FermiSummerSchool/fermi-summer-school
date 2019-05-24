@@ -97,41 +97,25 @@ naima.save_results_table(out_root, sampler)
 
 # In[51]:
 
-naima.plot_fit(sampler, modelidx=0, label=None, sed=True, last_step=False, 
+#Plot the fit results.
+#Try confs=None, or try e_range=None
+
+f = naima.plot_fit(sampler, modelidx=0, label=None, sed=True, last_step=False, 
                n_samples=100, confs=[3,2,1], ML_info=True, 
                figure=None, plotdata=True, plotresiduals=True, 
                e_unit=None, e_range=(300*u.GeV,200*u.TeV), e_npoints=200, threads=3, 
                xlabel=None, ylabel=None, ulim_opts={}, errorbar_opts={})
-
-#Plot the fit results.
-#Try confs=None, or try e_range=None
+f.savefig("RXJ1713_SED.png" )
 
 
-# In[26]:
-
-#output files
-
-get_ipython().magic(u'ls RXJ1713_IC_minimal*')
-
-
-# In[39]:
-
-from IPython.display import Image, display 
 
 #corner plot shows 1-D and 2-D projections of posterior probability.
 #Useful to check correlations between parameters, see if the sampling was run
 #with enough statistics etc.
-display(Image("RXJ1713_IC_minimal_corner.png"))
-
-
-# In[40]:
 
 #Chain plots show the 1-D projection of the posterior distribution for a given parameter
 #as well as the evolution of the parameter during the sampling.
-display(Image("RXJ1713_IC_minimal_chain_norm.png"))
 
-
-# In[ ]:
 
 
 

@@ -29,13 +29,13 @@ electrons = BrokenPowerLaw( amplitude = 1/u.eV, e_0 = 1 * u.TeV,
 #energies at which we want to evaluate the spectrum
 Eelec = np.logspace(-1, 6, 100) * u.GeV
 
-get_ipython().magic(u'matplotlib inline')
+#get_ipython().magic(u'matplotlib inline')
 
 plt.loglog(Eelec, electrons(Eelec), label="Electron spectrum (PL)")
 plt.ylabel("Electron spectrum dN/dE [1/eV]")
 plt.xlabel("Electron energy [GeV]")
 plt.legend()
-
+plt.savefig("ElectronSpectrum.png" )
 
 # In[8]:
 
@@ -80,8 +80,9 @@ Egamma = np.logspace(-6, 5, 100) * u.GeV
 #source distance
 D=2*u.kpc
 
-get_ipython().magic(u'matplotlib inline')
+#get_ipython().magic(u'matplotlib inline')
 
+plt.clf()
 plt.loglog(Egamma, synch.flux(Egamma, distance=D), label="Synchrotron emission")
 plt.loglog(Egamma, IC.flux(Egamma, distance=D), label="IC emission")
 plt.loglog(Egamma, brems.flux(Egamma, distance=D), label="Bremsstrahlung")
@@ -90,6 +91,7 @@ plt.xlabel("Photon energy [GeV]")
 plt.ylim(1e-30,1e2)
 plt.legend()
 
+plt.savefig("PhotonFlux.png" )
 
 # In[49]:
 
@@ -101,8 +103,8 @@ Egamma = np.logspace(-6, 6, 100) * u.GeV
 #source distance
 D=2*u.kpc
 
-get_ipython().magic(u'matplotlib inline')
-
+#get_ipython().magic(u'matplotlib inline')
+plt.clf()
 plt.loglog(Egamma, synch.sed(Egamma, distance=D), label="Synchrotron emission")
 plt.loglog(Egamma, IC.sed(Egamma, distance=D), label="IC emission (total)")
 plt.loglog(Egamma, brems.sed(Egamma, distance=D), label="Bremsstrahlung")
@@ -110,15 +112,15 @@ plt.ylabel(r"SED: $E^2 dN/dE$ [1/eV/cm$^2$/s]")
 plt.xlabel("Photon energy [GeV]")
 plt.ylim(1e-12,1e-8)
 plt.legend()
-
+plt.savefig("PhotonSED.png" )
 
 # In[50]:
 
 #IC components.
 #IC emission can easily plotted for each seed photon field.
 
-get_ipython().magic(u'matplotlib inline')
-
+#get_ipython().magic(u'matplotlib inline')
+plt.clf()
 plt.loglog(Egamma, IC.sed(Egamma, distance=D), label="IC emission (total)")
 for seed in IC.seed_photon_fields:
     plt.loglog(Egamma, IC.sed(Egamma, distance=D, seed=seed), 
@@ -128,12 +130,12 @@ plt.xlabel("Photon energy [GeV]")
 plt.xlim(1e-3,1e6)
 plt.ylim(1e-11,1e-8)
 plt.legend()
-
+plt.savefig("IC_SED.png" )
 
 # In[51]:
 
-get_ipython().magic(u'matplotlib inline')
-
+#get_ipython().magic(u'matplotlib inline')
+plt.clf()
 for seed in IC.seed_photon_fields:
     plt.plot(Egamma, 
                IC.sed(Egamma, distance=D, seed=seed)/IC.sed(Egamma, distance=D), 
@@ -144,7 +146,7 @@ plt.xlim(1e-3,1e6)
 plt.ylim(1e-3,1)
 plt.legend()
 plt.xscale("log")
-
+plt.savefig("ICrelative.png" )
 
 # In[ ]:
 
