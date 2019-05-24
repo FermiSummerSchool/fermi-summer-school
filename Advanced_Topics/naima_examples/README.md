@@ -1,7 +1,8 @@
 # Documentation
 
 * naima webpage with many examples: https://naima.readthedocs.io/en/latest/index.html 
-* naima github repo with example scripts: https://github.com/zblz/naima
+* naima github repo with more example scripts and example data: https://github.com/zblz/naima
+* Documentation and more info about posterior sampling using emcee: http://dfm.io/emcee/current/
 
 # Prerequisites
 
