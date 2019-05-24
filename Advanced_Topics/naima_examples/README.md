@@ -6,8 +6,11 @@
 # Prerequisites
 
 Naima can be installed using `pip` or `conda`:
+    
     pip install naima
+
 or
+
     conda install naima
 
 Recent-ish versions of matplotlib and astropy are needed.
