@@ -24,7 +24,7 @@ import matplotlib.pyplot as plt
 
 data = ascii.read("RXJ1713_HESS_2007.dat")
 
-print data
+print(data)
 
 
 # In[3]:

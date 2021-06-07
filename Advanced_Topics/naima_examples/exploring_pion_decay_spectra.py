@@ -46,7 +46,7 @@ plt.savefig("ProtonSpectrum.png" )
 #naima models are phyical and accept/return astropy quantities.
 #Try: protonsPL( 2.0 ) without a unit...
 for E in [ 1*u.GeV, 1000*u.GeV, 1*u.TeV]:
-    print "dN/dE(", E, ") = ", protonsPL(E)
+    print( "dN/dE(", E, ") = ", protonsPL(E) )
 
 
 
@@ -68,8 +68,8 @@ pionsPL.set_Wp(10**50 * u.erg)
 pionsCutoff.set_Wp(10**50 * u.erg)
 
 #units check...
-print "Flux dN/dE:", pionsPL.flux([1]*u.TeV, distance=2*u.kpc)
-print "SED E^2dN/dE:", pionsPL.sed([1]*u.TeV, distance=2*u.kpc)
+print( "Flux dN/dE:", pionsPL.flux([1]*u.TeV, distance=2*u.kpc) )
+print( "SED E^2dN/dE:", pionsPL.sed([1]*u.TeV, distance=2*u.kpc) )
 
 
 # In[43]:
