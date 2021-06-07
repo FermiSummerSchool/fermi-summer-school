@@ -43,7 +43,7 @@ plt.savefig("ElectronSpectrum.png" )
 #naima models are phyical and accept/return astropy quantities.
 #Try: electrons( 2.0 ) without a unit...
 for E in [ 1*u.GeV, 1000*u.GeV, 1*u.TeV]:
-    print "dN/dE(", E, ") = ", electrons(E)
+    print( "dN/dE(", E, ") = ", electrons(E) )
 
 
 
@@ -66,8 +66,8 @@ brems = Bremsstrahlung(electrons, n0=1.0/u.cm**3,
 synch.set_We(10**50 * u.erg)
 
 #units check...
-print "Flux dN/dE:", synch.flux([1]*u.keV, distance=2*u.kpc)
-print "SED E^2dN/dE:", synch.sed([1]*u.keV, distance=2*u.kpc)
+print( "Flux dN/dE:", synch.flux([1]*u.keV, distance=2*u.kpc) )
+print( "SED E^2dN/dE:", synch.sed([1]*u.keV, distance=2*u.kpc) )
 
 
 # In[47]:
