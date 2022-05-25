@@ -10,23 +10,25 @@ binning:
 selection :
   emin : 100
   emax : 100000
-  zmax    : 100
+  zmax    : 90
   evclass : 128
   evtype  : 3
   tmin    : 239557417
   tmax    : 255398400
-  filter  : null
+  filter  : 'DATA_QUAL>0 && LAT_CONFIG==1'
   target : '3C 279'
 
 gtlike:
   edisp : True
-  irfs : 'P8R3_SOURCE_V2'
+  edisp_bins : -1
+  irfs : 'P8R3_SOURCE_V3'
+  edisp_disable : ['isodiff']
 
 model:
   src_roiwidth : 20.0
   galdiff  : '$CONDA_PREFIX/share/fermitools/refdata/fermi/galdiffuse/gll_iem_v07.fits'
-  isodiff  : 'iso_P8R3_SOURCE_V2_v1.txt'
-  catalogs : ['FL8Y']
+  isodiff  : 'iso_P8R3_SOURCE_V3_v1.txt'
+  catalogs : ['4FGL-DR3']
 
 components:
   - { selection : { evtype : 4  } } # PSF0
