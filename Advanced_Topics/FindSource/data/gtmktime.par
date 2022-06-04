@@ -1,0 +1,23 @@
+#
+# $Header: /nfs/slac/g/glast/ground/cvs/ScienceTools-scons/dataSubselector/pfiles/gtmktime.par,v 1.7 2010/04/07 19:18:35 jchiang Exp $
+#
+scfile,f,a,"/data/Tutorials/fermi-summer-school/Advanced_Topics/FindSource/data/SC00.fits",,,"Spacecraft data file"
+sctable,s,h,"SC_DATA",,,"Spacecraft data extension"
+filter,s,a,"DATA_QUAL>0 && LAT_CONFIG==1",,,"Filter expression"
+roicut,b,a,no,,,"Apply ROI-based zenith angle cut"
+evfile,f,a,"/data/Tutorials/fermi-summer-school/Advanced_Topics/FindSource/data/ft1_03.fits",,,"Event data file"
+evtable,s,h,"EVENTS",,,"Event data extension"
+outfile,s,a,"/data/Tutorials/fermi-summer-school/Advanced_Topics/FindSource/data/ft1_filtered_03.fits",,,"Output event file name"
+apply_filter,b,h,yes,,,"apply GTI filter"
+
+overwrite,b,h,no,,,"Build GTI from scratch (overwrite existing GTI)"
+header_obstimes,b,h,yes,,,"Use FITS header values for TSTART and TSTOP"
+tstart,r,h,0,,,"Observation start time (MET)"
+tstop,r,h,0,,,"Observation stop time (MET)"
+gtifile,s,h,"default",,,"Name of temporary file for storing GTIs"
+
+chatter,i,h,2,0,4,Output verbosity
+clobber,        b, h, yes, , , "Overwrite existing output files"
+debug,          b, h, no, , , "Activate debugging mode"
+gui,            b, h, no, , , "GUI mode activated"
+mode,           s, h, "ql", , , "Mode of automatic parameters"

@@ -1,0 +1,41 @@
+# $Header: /nfs/slac/g/glast/ground/cvs/Likelihood/pfiles/gtexpcube2.par,v 1.13 2015/01/16 05:36:26 jchiang Exp $
+#
+# General parameters.
+infile,f,a,"/data/Tutorials/fermi-summer-school/Advanced_Topics/FindSource/data/ltcube_03.fits",,,"Livetime cube file"
+cmap,f,a,"none",,,"Counts map file"
+outfile,f,a,"/data/Tutorials/fermi-summer-school/Advanced_Topics/FindSource/data/bexpmap_roi_03.fits",,,"Output file name"
+irfs,s,a,"P8R3_SOURCE_V3",,,"Response functions to use"
+evtype,i,h,INDEF,,,"Event type selections"
+
+edisp_bins,i,h,0,,,"Number of extra bins to compute for energy dispersion purposes"
+
+# Parameters for user-defined map.
+nxpix,i,a,100,,,"Size of the X axis in pixels"
+nypix,i,a,100,,,"Size of the Y axis in pixels"
+binsz,r,a,0.1,,,"Image scale (in degrees/pixel)"
+coordsys,s,a,"CEL",CEL|GAL,,"Coordinate system (CEL - celestial, GAL -galactic)"
+xref,r,a,284.25,,,"First coordinate of image center in degrees (RA or galactic l)"
+yref,r,a,16.8833,,,"Second coordinate of image center in degrees (DEC or galactic b)"
+axisrot,r,a,0,,,"Rotation angle of image axis, in degrees"
+proj,s,a,"CAR",,,"Projection method e.g. AIT|ARC|CAR|GLS|MER|NCP|SIN|STG|TAN"
+ebinalg,s,h,"LOG",LOG|FILE,,"Algorithm for defining energy bins"
+emin,r,a,100,,,"Start energy (MeV) of first bin"
+emax,r,a,100000,,,"Stop energy (MeV) of last bin"
+enumbins,i,a,24,,,"Number of logarithmically-spaced energy bins"
+ebinfile,s,a,"NONE",,,"Name of FITS file containing the energy bin definition"
+
+# Parameters for user-defined healpix map.
+hpx_ordering_scheme,s,h,"RING",RING|NESTED,,"Ordering Scheme"
+hpx_order,i,h,6,,,"Order of the map (int between 0 and 12, included)"
+
+# Hidden parameters.
+bincalc,s,h,"EDGE",EDGE|CENTER,,"Energy values as bounds or logrithmic centers of energy bins"
+ignorephi,     b, h, "no", , , "Ignore phi information in Livetime cube"
+thmax, r, h, 180,,,"Maximum off-axis angle to include in effective area integration"
+thmin, r, h, 0,,,"Minimum off-axis angle to include in effective area integration"
+table,         s, h, "EXPOSURE",,,"Exposure cube extension"
+
+chatter,i,h,2,0,4,Output verbosity
+clobber,        b, h, yes, , , "Overwrite existing output files"
+debug,          b, h, no, , , "Activate debugging mode"
+mode,           s, h, "ql", , , "Mode of automatic parameters"

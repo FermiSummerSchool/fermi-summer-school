@@ -1,0 +1,42 @@
+data:
+  evfile : events.txt
+  scfile : SC00.fits
+
+binning:
+  roiwidth   : 10.0
+  binsz      : 0.1
+  binsperdec : 8
+
+selection :
+  emin : 100
+  emax : 100000
+  zmax    : 90
+  evclass : 128
+  evtype  : 3
+  tmin    : 645196187
+  tmax    : 645448376
+  filter  : 'DATA_QUAL>0 && LAT_CONFIG==1'
+  target : 'NHer2021'
+
+gtlike:
+  edisp : True
+  edisp_bins : -1
+  irfs : 'P8R3_SOURCE_V3'
+  edisp_disable : ['isodiff']
+
+model:
+  src_roiwidth : 15.0
+  galdiff  : '$CONDA_PREFIX/share/fermitools/refdata/fermi/galdiffuse/gll_iem_v07.fits'
+  isodiff  : 'iso_P8R3_SOURCE_V3_v1.txt'
+  catalogs : ['4FGL-DR3']
+  sources  :
+    - { name: 'NHer2021', ra : 284.25, dec : 16.8833, SpectrumType : 'PowerLaw', Index : 2.0, Scale : 1000, Prefactor : !!float 1e-11, SpatialModel: 'PointSource' }
+
+components:
+  - { selection : { evtype : 4  } } # PSF0
+  - { selection : { evtype : 8  } } # PSF1
+  - { selection : { evtype : 16 } } # PSF2
+  - { selection : { evtype : 32 } } # PSF3
+
+fileio:
+   outdir : data

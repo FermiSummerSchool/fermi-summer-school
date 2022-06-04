@@ -1,0 +1,27 @@
+#
+# $Header: /nfs/slac/g/glast/ground/cvs/ScienceTools-scons/dataSubselector/pfiles/gtselect.par,v 1.26 2015/01/08 16:46:22 jchiang Exp $
+#
+infile,f,a,"/data/Tutorials/fermi-summer-school/Advanced_Topics/FindSource/data/evfile_03.txt",,,"Input FT1 file"
+outfile,f,a,"/data/Tutorials/fermi-summer-school/Advanced_Topics/FindSource/data/ft1_03.fits",,,"Output FT1 file"
+ra,r,a,284.25,0,360,RA for new search center (degrees)
+dec,r,a,16.8833,-90,90,Dec for new search center (degrees)
+rad,r,a,7.57106781186548,0,180,radius of new search region (degrees)
+tmin,r,a,645196187,0,,start time (MET in s)
+tmax,r,a,645448376,0,,end time (MET in s)
+emin,r,a,100,0,,lower energy limit (MeV)
+emax,r,a,100000,0,,upper energy limit (MeV)
+zmin,r,h,0,0,180,minimum zenith angle value (degrees)
+zmax,r,a,90,0,180,maximum zenith angle value (degrees)
+evclass,i,h,INDEF,0,31,"Event class selection"
+evtype,i,h,INDEF,,,"Event type selections"
+convtype,i,h,-1,-1,1,"Conversion type (-1=both, 0=Front, 1=Back)"
+phasemin,r,h,0,0,1,minimum pulse phase
+phasemax,r,h,1,0,1,maximum pulse phase
+
+evtable,s,h,"EVENTS",,,"Event data extension"
+
+chatter,i,h,2,0,4,Output verbosity
+clobber,        b, h, yes, , , "Overwrite existing output files"
+debug,          b, h, no, , , "Activate debugging mode"
+gui,            b, h, no, , , "GUI mode activated"
+mode,           s, h, "ql", , , "Mode of automatic parameters"

@@ -1,0 +1,101 @@
+<?xml version="1.0" standalone="no"?>
+<source_library title="source library">
+  <source name="4FGL J1856.5+1735" type="PointSource">
+    <spectrum type="PowerLaw">
+      <parameter error="3.616023132" free="1" max="1000" min="1e-05" name="Prefactor" scale="1e-12" value="2.649348653" />
+      <parameter free="0" max="5" min="0" name="Index" scale="-1" value="2.532685995" />
+      <parameter free="0" max="1326.051514" min="1326.051514" name="Scale" scale="1" value="1326.051514" />
+    </spectrum>
+    <spatialModel type="SkyDirFunction">
+      <parameter free="0" max="360" min="-360" name="RA" scale="1" value="284.1387" />
+      <parameter free="0" max="90" min="-90" name="DEC" scale="1" value="17.5999" />
+    </spatialModel>
+  </source>
+  <source name="4FGL J1912.0+1612" type="PointSource">
+    <spectrum type="PowerLaw">
+      <parameter free="0" max="1000" min="1e-05" name="Prefactor" scale="1e-13" value="7.721961841" />
+      <parameter free="0" max="5" min="0" name="Index" scale="-1" value="2.533800364" />
+      <parameter free="0" max="1377.334595" min="1377.334595" name="Scale" scale="1" value="1377.334595" />
+    </spectrum>
+    <spatialModel type="SkyDirFunction">
+      <parameter free="0" max="360" min="-360" name="RA" scale="1" value="288.0206" />
+      <parameter free="0" max="90" min="-90" name="DEC" scale="1" value="16.2021" />
+    </spatialModel>
+  </source>
+  <source name="4FGL J1912.5+1320" type="PointSource">
+    <spectrum type="LogParabola">
+      <parameter free="0" max="1000" min="1e-05" name="norm" scale="1e-11" value="1.655018586" />
+      <parameter free="0" max="5" min="-5" name="alpha" scale="1" value="2.825941563" />
+      <parameter free="0" max="2" min="-2" name="beta" scale="1" value="0.4263218641" />
+      <parameter free="0" max="885.7199097" min="885.7199097" name="Eb" scale="1" value="885.7199097" />
+    </spectrum>
+    <spatialModel type="SkyDirFunction">
+      <parameter free="0" max="360" min="-360" name="RA" scale="1" value="288.1322" />
+      <parameter free="0" max="90" min="-90" name="DEC" scale="1" value="13.3489" />
+    </spatialModel>
+  </source>
+  <source name="4FGL J1915.3+1149" type="PointSource">
+    <spectrum type="LogParabola">
+      <parameter free="0" max="1000" min="1e-05" name="norm" scale="1e-12" value="8.490228059" />
+      <parameter free="0" max="5" min="-5" name="alpha" scale="1" value="2.749093056" />
+      <parameter free="0" max="2" min="-2" name="beta" scale="1" value="0.4047497809" />
+      <parameter free="0" max="1315.205444" min="1315.205444" name="Eb" scale="1" value="1315.205444" />
+    </spectrum>
+    <spatialModel type="SkyDirFunction">
+      <parameter free="0" max="360" min="-360" name="RA" scale="1" value="288.8357" />
+      <parameter free="0" max="90" min="-90" name="DEC" scale="1" value="11.8178" />
+    </spatialModel>
+  </source>
+  <source name="4FGL J1919.4+1313" type="PointSource">
+    <spectrum type="LogParabola">
+      <parameter free="0" max="1000" min="1e-05" name="norm" scale="1e-11" value="1.076850019" />
+      <parameter free="0" max="5" min="-5" name="alpha" scale="1" value="3.138069868" />
+      <parameter free="0" max="2" min="-2" name="beta" scale="1" value="0.5666854382" />
+      <parameter free="0" max="902.480835" min="902.480835" name="Eb" scale="1" value="902.480835" />
+    </spectrum>
+    <spatialModel type="SkyDirFunction">
+      <parameter free="0" max="360" min="-360" name="RA" scale="1" value="289.8727" />
+      <parameter free="0" max="90" min="-90" name="DEC" scale="1" value="13.2284" />
+    </spatialModel>
+  </source>
+  <source name="4FGL J1923.2+1408e" type="DiffuseSource">
+    <spectrum type="LogParabola">
+      <parameter free="0" max="1000" min="1e-05" name="norm" scale="1e-11" value="1.545413244" />
+      <parameter free="0" max="5" min="-5" name="alpha" scale="1" value="2.168349504" />
+      <parameter free="0" max="2" min="-2" name="beta" scale="1" value="0.1072406769" />
+      <parameter free="0" max="2529.511963" min="2529.511963" name="Eb" scale="1" value="2529.511963" />
+    </spectrum>
+    <spatialModel file="$(FERMIPY_DATA_DIR)/catalogs/Extended_8years/Templates/W51C.fits" type="SpatialMap">
+      <parameter free="0" max="1" min="1" name="Prefactor" scale="1" value="1" />
+    </spatialModel>
+  </source>
+  <source name="NHer2021" type="PointSource">
+    <spectrum type="PowerLaw">
+      <parameter error="1.079948071" free="1" max="1000" min="1e-05" name="Prefactor" scale="1e-11" value="2.415774003" />
+      <parameter free="0" max="5" min="0" name="Index" scale="-1" value="2" />
+      <parameter free="0" max="1000" min="0.001" name="Scale" scale="1000" value="1" />
+    </spectrum>
+    <spatialModel type="SkyDirFunction">
+      <parameter free="0" max="360" min="-360" name="RA" scale="1" value="284.25" />
+      <parameter free="0" max="90" min="-90" name="DEC" scale="1" value="16.8833" />
+    </spatialModel>
+  </source>
+  <source name="galdiff" type="DiffuseSource">
+    <spectrum type="PowerLaw">
+      <parameter error="0.08651371921" free="1" max="10" min="0.1" name="Prefactor" scale="1" value="0.9497487868" />
+      <parameter error="0.05677249956" free="1" max="1" min="-1" name="Index" scale="-1" value="0.01363980229" />
+      <parameter free="0" max="1000" min="1000" name="Scale" scale="1" value="1000" />
+    </spectrum>
+    <spatialModel file="$(CONDA_PREFIX)/share/fermitools/refdata/fermi/galdiffuse/gll_iem_v07.fits" type="MapCubeFunction">
+      <parameter free="0" max="10" min="0" name="Normalization" scale="1" value="1" />
+    </spatialModel>
+  </source>
+  <source name="isodiff" type="DiffuseSource">
+    <spectrum apply_edisp="false" file="$(FERMI_DIFFUSE_DIR)/iso_P8R3_SOURCE_V3_v1.txt" type="FileFunction">
+      <parameter error="1.251291481" free="1" max="1000" min="0.001" name="Normalization" scale="1" value="1.491252689" />
+    </spectrum>
+    <spatialModel type="ConstantValue">
+      <parameter free="0" max="10" min="0" name="Value" scale="1" value="1" />
+    </spatialModel>
+  </source>
+</source_library>

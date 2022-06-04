@@ -1,0 +1,64 @@
+#-------------------------------------------------------------------------------
+# General parameters.
+evfile,        f, a, "/data/Tutorials/fermi-summer-school/Advanced_Topics/FindSource/data/ft1_03.fits", , , "Event data file name"
+scfile,        f, a, "/data/Tutorials/fermi-summer-school/Advanced_Topics/FindSource/data/SC00.fits", , , "Spacecraft data file name"
+outfile,       f, a, "/data/Tutorials/fermi-summer-school/Advanced_Topics/FindSource/data/ccube_03.fits", , , "Output file name"
+algorithm,     s, a, "CCUBE", CCUBE|CMAP|LC|PHA1|PHA2|HEALPIX, , "Type of output file"
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# Energy binning parameters.
+ebinalg,       s, a, "LOG", FILE|LIN|LOG, , "Algorithm for defining energy bins"
+emin,          r, a, 100, , , "Start value for first energy bin in MeV"
+emax,          r, a, 100000, , , "Stop value for last energy bin in MeV"
+enumbins,      i, a, 24, , , "Number of logarithmically uniform energy bins"
+denergy,       r, a, 0, , , "Width of linearly uniform energy bins in MeV"
+ebinfile,      f, a, "NONE", , , "Name of the file containing the energy bin definition"
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# Time binning parameters.
+tbinalg,       s, a, "LIN", FILE|LIN|SNR, , "Algorithm for defining time bins"
+tstart,        r, a, 0, , , "Start value for first time bin in MET"
+tstop,         r, a, 0, , , "Stop value for last time bin in MET"
+dtime,         r, a, 0, , , "Width of linearly uniform time bins in seconds"
+tbinfile,      f, a, "NONE", , , "Name of the file containing the time bin definition"
+snratio,       r, a, 0, 1.e-8, , "Signal-to-noise ratio per time bin"
+lcemin,        r, a, 0, 0., , "Lower bound of energy range in MeV"
+lcemax,        r, a, 0, 0., , "Upper bound of energy range in MeV"
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# Spatial binning parameters.
+nxpix,         i, a, 100, , , "Size of the X axis in pixels"
+nypix,         i, a, 100, , , "Size of the Y axis in pixels"
+binsz,         r, a, 0.1, , , "Image scale (in degrees/pixel)"
+coordsys,      s, a, "CEL", CEL|GAL, ,"Coordinate system (CEL - celestial, GAL -galactic)"
+xref,          r, a, 284.25, , , "First coordinate of image center in degrees (RA or galactic l)"
+yref,          r, a, 16.8833, , , "Second coordinate of image center in degrees (DEC or galactic b)"
+axisrot,       r, a, 0, , , "Rotation angle of image axis, in degrees"
+rafield,       s, h, "RA", , ,"First coordinate field to bin"
+decfield,      s, h, "DEC", , ,"Second coordinate field to bin"
+proj,          s, a, "AIT", , , "Projection method e.g. AIT|ARC|CAR|GLS|MER|NCP|SIN|STG|TAN:"
+#-------------------------------------------------------------------------------
+
+#--------------------------------------------------------------------------------
+# Healpix parameters.
+hpx_ordering_scheme,    s, a, "RING", RING|NESTED, ,"Ordering Scheme"
+hpx_order,              i, a, 3, , , "Order of the map (int between 0 and 12, included)"
+hpx_ebin,               b, a, yes, , , "Do you want Energy binning ?"
+hpx_region,             s, a, "", , , "Region, leave empty for all-sky"
+#--------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# Hidden parameters.
+evtable,       s, h, "EVENTS", , , "Table containing event data"
+sctable,       s, h, "SC_DATA", , , "Table containing spacecraft data"
+efield,        s, h, "ENERGY", , ,"Name of energy field to bin"
+tfield,        s, h, "TIME", , , "Name of time field to bin"
+chatter,       i, h, 2, 0, 4, "Chattiness of output"
+clobber,       b, h, yes, , , "Overwrite existing output files with new output files"
+debug,         b, h, no, , , "Debugging mode activated"
+gui,           b, h, no, , , "GUI mode activated"
+mode,          s, h, "ql", , ,"Mode of automatic parameters"
+#-------------------------------------------------------------------------------

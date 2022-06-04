@@ -1,0 +1,28 @@
+#
+# $Header: /nfs/slac/g/glast/ground/cvs/ScienceTools-scons/Likelihood/pfiles/gtsrcmaps.par,v 1.38 2016/03/30 23:06:53 echarles Exp $
+#
+scfile,f,h,"",,,"Spacecraft data file"
+sctable,s,h,"SC_DATA",,,Spacecraft data extension
+expcube,fr,a,"/data/Tutorials/fermi-summer-school/Advanced_Topics/FindSource/data/ltcube_03.fits",,,"Exposure hypercube file"
+cmap,fr,a,"/data/Tutorials/fermi-summer-school/Advanced_Topics/FindSource/data/ccube_03.fits",,,"Counts map file"
+srcmdl,fr,a,"/data/Tutorials/fermi-summer-school/Advanced_Topics/FindSource/data/srcmdl_03.xml",,,"Source model file"
+bexpmap,f,a,"/data/Tutorials/fermi-summer-school/Advanced_Topics/FindSource/data/bexpmap_03.fits",,,"Binned exposure map"
+wmap,f,h,"none",,,"Likelihood weights map"
+outfile,f,a,"/data/Tutorials/fermi-summer-school/Advanced_Topics/FindSource/data/srcmap_03.fits",,,"Source maps output file"
+irfs,s,a,"P8R3_SOURCE_V3",,,"Response functions"
+evtype,i,h,INDEF,,,"Event type selections"
+convol,b,h,yes,,,"Perform convolution with psf"
+resample,b,h,yes,,,"Resample input counts map for convolution"
+rfactor,i,h,2,,,"Resampling factor"
+minbinsz,r,h,0.1,,,"Minimum pixel size for rebinning fine maps"
+ptsrc,b,h,yes,,,"Compute point source maps"
+psfcorr,b,h,yes,,,"Apply psf integral corrections"
+emapbnds,b,h,yes,,,"Enforce boundaries of exposure map"
+edisp_bins,i,h,0,,,"Number of extra bins to compute for energy dispersion purposes"
+copyall,b,h,no,,,"Copy all source maps from input counts map file to output"
+
+chatter,i,h,2,0,4,Output verbosity
+clobber,        b, h, yes, , , "Overwrite existing output files"
+debug,          b, h, no, , , "Activate debugging mode"
+gui,            b, h, no, , , "GUI mode activated"
+mode,           s, h, "ql", , , "Mode of automatic parameters"
