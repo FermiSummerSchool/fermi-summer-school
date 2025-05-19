@@ -12,8 +12,10 @@ You can also find all of the past summer school schedules here:
 https://confluence.slac.stanford.edu/display/LSP/Home
 
 To run the `fermipy` notebooks: Please first download and extract the precomputed data files:
+Change to proper top directory : ~/shared/fermi-summer-school (outside botle) or /shared/fermi-summer-school
 
 ```
+cd /shared/fermi-summer-school 
 wget https://fermi.gsfc.nasa.gov/science/mtgs/summerschool/2021/fermipyTutorialData.tgz
 tar xf fermipyTutorialData.tgz
 mv data ./Likelihood_Advanced
