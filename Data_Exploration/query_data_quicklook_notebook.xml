@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Query>
+    <Type>POST</Type>
+    <Spacecraft>on</Spacecraft>
+    <Destination>query</Destination>
+    <EndURL>https://fermi.gsfc.nasa.gov/cgi-bin/ssc/LAT/LATDataQuery.cgi</EndURL>
+    <CoordField>77.3582,5.69315</CoordField>
+    <CoordSystem>J2000</CoordSystem>
+    <ShapeField>15</ShapeField>
+    <TimeField>410227203,441763203</TimeField>
+    <TimeType>MET</TimeType>
+    <EnergyField>100,300000</EnergyField>
+    <photonOrExtendedOrNone>photon</photonOrExtendedOrNone>
+    <OutputDir>../0506data/</OutputDir>
+</Query>
