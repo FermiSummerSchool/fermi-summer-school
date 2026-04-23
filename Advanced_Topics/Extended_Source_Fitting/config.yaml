@@ -1,0 +1,42 @@
+data:
+ evfile : events.txt
+ scfile : SC00.fits
+
+binning:
+ roiwidth   : 10.0
+ binsz      : 0.1
+ binsperdec : 8
+
+selection:
+ emin    : 100
+ emax    : 50e3
+ zmax    : 90
+ evclass : 128
+ tmin    : 239557417
+ tmax    : 269222402
+ filter  : 'DATA_QUAL>0 && LAT_CONFIG==1'
+ ra      : 290.83
+ dec     : 14.1558 
+
+gtlike:
+ edisp : True
+ irfs  : 'P8R3_SOURCE_V3'
+ edisp_disable  : ['isodiff', 'galdiff']
+
+model:
+ src_roiwidth : 15.0
+ galdiff  : '$CONDA_PREFIX/share/fermitools/refdata/fermi/galdiffuse/gll_iem_v07.fits'
+ isodiff  : 'iso_P8R3_SOURCE_V3_v1.txt'
+ extdir   : '$CONDA_PREFIX/LAT_extended_sources_12years/Templates'
+ catalogs : '4FGL-DR3'
+
+components:
+ - { selection : { evtype : 4 } } # PSF0
+ - { selection : { evtype : 8 } } # PSF1
+ - { selection : { evtype : 16 } } # PSF2
+ - { selection : { evtype : 32 } } # PSF3
+
+fileio: 
+ outdir : data
+
+

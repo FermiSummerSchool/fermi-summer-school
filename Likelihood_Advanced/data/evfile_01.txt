@@ -1,0 +1,2 @@
+/data/fermi-summer-school/Likelihood_Advanced/data/../data/PH00.fits
+/data/fermi-summer-school/Likelihood_Advanced/data/../data/PH01.fits
