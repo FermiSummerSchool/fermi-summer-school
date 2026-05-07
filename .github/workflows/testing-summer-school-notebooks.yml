@@ -54,7 +54,7 @@ jobs:
           conda-remove-defaults: true
           python-version: 3.11
           activate-environment: test_fermi_env
-          environment-file:  environments/fermibottle-fermi-env.yml # ${{inputs.env_file}}
+          environment-file:  "${{ github.workspace }}/FB_TESTING/fermi-summer-school/environments/fermibottle-fermi-env.yml" # ${{inputs.env_file}}
           auto-update-conda: false
           auto-activate-base: false
           show-channel-urls: true
@@ -65,7 +65,7 @@ jobs:
         run: |
           # conda list
           echo "Run fermi env fermi-summer-school tests on branch ${{ github.ref_name }}"
-          cd /shared/fermi-summer-school/Likelihood_Advanced/
+          cd ${{ github.workspace }}/FB_TESTING/fermi-summer-school/Likelihood_Advanced/
           wget https://fermi.gsfc.nasa.gov/science/mtgs/summerschool/2021/fermipyTutorialData.tgz
           tar xf fermipyTutorialData.tgz
           cd ${{ github.workspace }}/FB_TESTING/fermi-summer-school/
