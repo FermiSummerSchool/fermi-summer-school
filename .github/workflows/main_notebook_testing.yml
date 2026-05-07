@@ -1,0 +1,28 @@
+name: Main Fermi Summer school notebooks
+
+on:
+  push:
+    branches: master 
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+
+jobs:
+  # This workflow returns a JSON matrix that covers the 2 OSes (macos,linux) and 2 architectures (x86,arm64) we currently support. Plus additional variables needed by the other workflows.
+  generate-matrix-tuple:
+    uses: ./.github/workflows/generate-matrix.yml # Call the matrix-generating workflow
+
+  # This job builds the 4 packages, uploads them to Anaconda and runs test(s) against them.
+  run-summer-school-tests:
+    needs: generate-matrix-tuple # Ensure matrix generation completes first
+    strategy:
+      matrix: ${{ fromJson(needs.generate-matrix-tuple.outputs.matrix) }}
+    uses: ./.github/workflows/testing-summer-school-notebooks.yml
+    secrets: inherit
+    with:
+      matrix_os: ${{ matrix.os }}
+      build_label: ${{needs.generate-matrix-tuple.outputs.baseline_label }}
+      env_file: ${{ matrix.env_target_file}}

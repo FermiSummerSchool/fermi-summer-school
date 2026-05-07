@@ -1,0 +1,99 @@
+name: Fermi summer school testing
+run-name: "Testing Fermi Summer School notebooks in Ferm env (outside of the bottle) - ${{ inputs.matrix_os }}"
+on:
+  workflow_call:
+    inputs:
+      matrix_os:
+        required: true
+        type: string
+        description: "matrix.os to be ran"
+      build_label:
+        required: true
+        type: string
+        description: "Fermitools package build label"
+      env_file:
+        required: true
+        type: string
+        description: "Fermitools conda env file to run"
+
+jobs:
+  test:
+    runs-on: ${{ inputs.matrix_os }}
+    continue-on-error: true # Default false is to fail at first error
+    name: "Testing Fermi Summer School Notebooks - ${{ inputs.matrix_os }} " 
+    defaults:
+      run:
+        shell: bash -l {0}
+    steps:
+      - name: Create FB_TESTING
+        id: create_fb_testing 
+        run: |
+          mkdir -p ${{ github.workspace }}/FB_TESTING
+          cd ${{ github.workspace }}/FB_TESTING/
+          mkdir -p ${{ github.workspace }}/FB_TESTING/fermi-summer-school
+          pwd
+          ls -l 
+          echo "We are FSS"
+
+      - name: Checkout Summer School Repo
+        uses: actions/checkout@v6
+        with:
+          repository: FermiSummerSchool/fermi-summer-school
+          path: FB_TESTING/fermi-summer-school
+
+      - name: Checkout FB_TESTING
+        id: checkout_fb_testing
+        run: |
+          pwd
+          ls -l FB_TESTING/
+          echo "Checkout here"
+
+      - name: Conda environment creation and activation
+        uses: conda-incubator/setup-miniconda@v4
+        with:
+          conda-remove-defaults: true
+          python-version: 3.11
+          activate-environment: test_fermi_env
+          environment-file:  environments/fermibottle-fermi-env.yml # ${{inputs.env_file}}
+          auto-update-conda: false
+          auto-activate-base: false
+          show-channel-urls: true
+
+      # BUG: This doesn't handle Tags RC and MAIN, it will only pull from tag dev. 
+      - name: Test Subset fermi-summer-school  Notebooks pkg.
+        id: test_summer_school_nb_fermi
+        run: |
+          # conda list
+          echo "Run fermi env fermi-summer-school tests on branch ${{ github.ref_name }}"
+          cd /shared/fermi-summer-school/Likelihood_Advanced/
+          wget https://fermi.gsfc.nasa.gov/science/mtgs/summerschool/2021/fermipyTutorialData.tgz
+          tar xf fermipyTutorialData.tgz
+          cd ${{ github.workspace }}/FB_TESTING/fermi-summer-school/
+          # 2 nbs  
+          pytest --nbmake -n auto --nbmake-timeout=3000 --junitxml=${{ github.workspace }}/FB_TESTING/test_results/fss_data_exploration_result.xml -vv Data_Exploration/*.ipynb 
+          # 4 NBs
+          pytest --nbmake -n auto --nbmake-timeout=3000 --junitxml=${{ github.workspace }}/FB_TESTING/test_results/fss_like_adv_fermipy_result.xml -vv Likelihood_Advanced/Likelihood\ With\ fermiPy.ipynb
+          pytest --nbmake -n auto --nbmake-timeout=3000 --junitxml=${{ github.workspace }}/FB_TESTING/test_results/fss_like_adv_curvature_result.xml -vv Likelihood_Advanced/Curvature\ Test.ipynb  
+          pytest --nbmake -n auto --nbmake-timeout=3000 --junitxml=${{ github.workspace }}/FB_TESTING/test_results/fss_like_adv_lightcurve_result.xml -vv Likelihood_Advanced/Lightcurve.ipynb 
+          pytest --nbmake -n auto --nbmake-timeout=3000 --junitxml=${{ github.workspace }}/FB_TESTING/test_results/fss_like_adv_sed_result.xml -vv Likelihood_Advanced/SED\ Stuff.ipynb
+
+        continue-on-error: true  # Job keeps going even if tests fail
+
+      # The layout for this reporting action works. Not sure if there is something better, but it does a good job for us.
+      - name: Publish Test Results Linux
+        uses: EnricoMi/publish-unit-test-result-action/linux@v2
+        if: runner.os == 'Linux'
+        with:
+          check_name: "Test Results: Fermipy ${{ inputs.matrix_os }}"
+          files: |
+             ${{ github.workspace }}/FB_TESTING/test_results/*.xml
+             !${{ github.workspace }}/FB_TESTING/test_results/myDoc.xml
+    
+      - name: Publish Test Results OSX
+        uses: EnricoMi/publish-unit-test-result-action/macos@v2
+        if: runner.os == 'macOS'
+        with:
+          check_name: "Test Results: Fermi env ${{ inputs.matrix_os }}"
+          files: |
+             ${{ github.workspace }}/FB_TESTING/test_results/*.xml
+             !${{ github.workspace }}/FB_TESTING/test_results/myDoc.xml

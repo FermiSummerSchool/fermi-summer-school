@@ -1,0 +1,32 @@
+name: Generate Fermitools CICD setup 
+on:
+  workflow_call:
+    outputs:
+      matrix:
+        description: "JSON array of matrix values"
+        value: ${{ jobs.generate-matrix.outputs.matrix }}
+      baseline_label:
+        description: "Build label used for conda package: dev/rc/main"
+        value: ${{ jobs.generate-matrix.outputs.build_label }}
+
+env:
+  LABEL_FOR_BUILD: ${{ vars.BUILD_LABEL || 'dev' }}
+  # ${{ fromJSON(vars.BUILD_LABEL || 'dev') }} 
+
+jobs:
+  generate-matrix:
+    runs-on: ubuntu-latest
+    # Build the liist of OSes, architecture, file containing Python dependencies, and additional packages needed to be installed. 
+    # Return the matrix  as a ouput parameter that other Jobs can input and process as a JSON object.
+    # Each OS only uses one Python dependencies environment file: fermitools-develop-linux.yml and fermitools-develop-osx.yml
+
+    steps:
+      - id: set_matrix
+        run: |
+          # {"os": "macos-13", "arch": "x86_64", "env_target_file": "fermitools-develop-osx-x86.yml", "packages": "llvm cfitsio swig"},
+          MATRIX_VALUES='{"os": "macos-15-intel", "arch": "x86_64", "env_target_file": "fermitools-develop-osx.yml", "packages": "llvm cfitsio swig"}, {"os": "ubuntu-24.04-arm", "arch": "arm64", "env_target_file": "fermitools-develop-linux.yml"},{"os": "ubuntu-24.04", "arch": "x86", "container": "redhat/ubi8:latest", "env_target_file": "fermitools-develop-linux.yml"}, {"os": "macos-15", "arch": "arm64", "env_target_file": "fermitools-develop-osx.yml", "packages": "llvm cfitsio swig"}' 
+          echo "matrix={\"include\":[$MATRIX_VALUES]}" >> "$GITHUB_OUTPUT"
+
+    outputs:
+      matrix: ${{ steps.set_matrix.outputs.matrix }}
+      build_label: ${{ env.LABEL_FOR_BUILD }}
