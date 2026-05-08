@@ -23,7 +23,7 @@ jobs:
     name: "Testing Fermi Summer School Notebooks - ${{ inputs.matrix_os }} " 
     defaults:
       run:
-        shell: bash -l {0}
+        shell: bash -el {0}
     steps:
       - name: Create FB_TESTING
         id: create_fb_testing 

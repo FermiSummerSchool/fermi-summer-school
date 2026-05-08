@@ -25,13 +25,12 @@ dependencies:
   - seaborn
   - "fermitools==2.5.*"
   - "fermitools-data"
-  - pyregion
   - pip:
       - LATSourceModel
       - astropy-iers-data
       - aplpy
       - pytest-xdist
-      - https://anaconda.org/jasercion/pyregion/2.3.1.dev7+g501f368/download/pyregion-2.3.1.dev7+g501f368.tar.gz
+      - git+https://github.com/astropy/pyregion.git
       - git+https://github.com/fermiPy/fermipy.git
       - git+https://github.com/threeML/threeML.git
       - git+https://github.com/threeML/astromodels.git

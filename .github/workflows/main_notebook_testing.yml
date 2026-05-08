@@ -19,6 +19,7 @@ jobs:
   run-summer-school-tests:
     needs: generate-matrix-tuple # Ensure matrix generation completes first
     strategy:
+      fail-fast: false
       matrix: ${{ fromJson(needs.generate-matrix-tuple.outputs.matrix) }}
     uses: ./.github/workflows/testing-summer-school-notebooks.yml
     secrets: inherit
