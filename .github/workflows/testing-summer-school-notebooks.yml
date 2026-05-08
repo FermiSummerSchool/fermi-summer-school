@@ -70,11 +70,10 @@ jobs:
           tar xf fermipyTutorialData.tgz
           cd ${{ github.workspace }}/FB_TESTING/fermi-summer-school/
           # 2 nbs  
-          pytest --nbmake -n auto --nbmake-timeout=3000 --junitxml=${{ github.workspace }}/FB_TESTING/test_results/fss_data_exploration_result.xml -vv Data_Exploration/*.ipynb 
-          # 4 NBs
-          pytest --nbmake -n auto --nbmake-timeout=3000 --junitxml=${{ github.workspace }}/FB_TESTING/test_results/fss_like_adv_fermipy_result.xml -vv Likelihood_Advanced/Likelihood\ With\ fermiPy.ipynb
-          pytest --nbmake -n auto --nbmake-timeout=3000 --junitxml=${{ github.workspace }}/FB_TESTING/test_results/fss_like_adv_curvature_result.xml -vv Likelihood_Advanced/Curvature\ Test.ipynb  
-          pytest --nbmake -n auto --nbmake-timeout=3000 --junitxml=${{ github.workspace }}/FB_TESTING/test_results/fss_like_adv_lightcurve_result.xml -vv Likelihood_Advanced/Lightcurve.ipynb 
+          pytest --nbmake -n auto --nbmake-timeout=3000 --junitxml=${{ github.workspace }}/FB_TESTING/test_results/fss_data_exploration_result.xml -vv Data_Exploration/*.ipynb  ; \
+          pytest --nbmake -n auto --nbmake-timeout=3000 --junitxml=${{ github.workspace }}/FB_TESTING/test_results/fss_like_adv_fermipy_result.xml -vv Likelihood_Advanced/Likelihood\ With\ fermiPy.ipynb  ; \
+          pytest --nbmake -n auto --nbmake-timeout=3000 --junitxml=${{ github.workspace }}/FB_TESTING/test_results/fss_like_adv_curvature_result.xml -vv Likelihood_Advanced/Curvature\ Test.ipynb   ; \
+          pytest --nbmake -n auto --nbmake-timeout=3000 --junitxml=${{ github.workspace }}/FB_TESTING/test_results/fss_like_adv_lightcurve_result.xml -vv Likelihood_Advanced/Lightcurve.ipynb  ; \
           pytest --nbmake -n auto --nbmake-timeout=3000 --junitxml=${{ github.workspace }}/FB_TESTING/test_results/fss_like_adv_sed_result.xml -vv Likelihood_Advanced/SED\ Stuff.ipynb
 
         continue-on-error: true  # Job keeps going even if tests fail
