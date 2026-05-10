@@ -61,7 +61,7 @@ jobs:
 
       # BUG: This doesn't handle Tags RC and MAIN, it will only pull from tag dev. 
       - name: Test Subset fermi-summer-school  Notebooks pkg P1
-        id: test_summer_school_nb_fermi P1
+        id: test_summer_school_nb_fermi_P1
         run: |
           # conda list
           echo "Run fermi env fermi-summer-school tests on branch ${{ github.ref_name }}"
