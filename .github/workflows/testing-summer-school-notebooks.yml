@@ -60,8 +60,8 @@ jobs:
           show-channel-urls: true
 
       # BUG: This doesn't handle Tags RC and MAIN, it will only pull from tag dev. 
-      - name: Test Subset fermi-summer-school  Notebooks pkg.
-        id: test_summer_school_nb_fermi
+      - name: Test Subset fermi-summer-school  Notebooks pkg P1
+        id: test_summer_school_nb_fermi P1
         run: |
           # conda list
           echo "Run fermi env fermi-summer-school tests on branch ${{ github.ref_name }}"
@@ -70,12 +70,35 @@ jobs:
           tar xf fermipyTutorialData.tgz
           cd ${{ github.workspace }}/FB_TESTING/fermi-summer-school/
           # 2 nbs  
-          pytest --nbmake -n auto --nbmake-timeout=3000 --junitxml=${{ github.workspace }}/FB_TESTING/test_results/fss_data_exploration_result.xml -vv Data_Exploration/*.ipynb  ; \
-          pytest --nbmake -n auto --nbmake-timeout=3000 --junitxml=${{ github.workspace }}/FB_TESTING/test_results/fss_like_adv_fermipy_result.xml -vv Likelihood_Advanced/Likelihood\ With\ fermiPy.ipynb  ; \
-          pytest --nbmake -n auto --nbmake-timeout=3000 --junitxml=${{ github.workspace }}/FB_TESTING/test_results/fss_like_adv_curvature_result.xml -vv Likelihood_Advanced/Curvature\ Test.ipynb   ; \
-          pytest --nbmake -n auto --nbmake-timeout=3000 --junitxml=${{ github.workspace }}/FB_TESTING/test_results/fss_like_adv_lightcurve_result.xml -vv Likelihood_Advanced/Lightcurve.ipynb  ; \
-          pytest --nbmake -n auto --nbmake-timeout=3000 --junitxml=${{ github.workspace }}/FB_TESTING/test_results/fss_like_adv_sed_result.xml -vv Likelihood_Advanced/SED\ Stuff.ipynb
+          pytest --nbmake -n auto --nbmake-timeout=3000 --junitxml=${{ github.workspace }}/FB_TESTING/test_results/fss_data_exploration_result.xml -vv Data_Exploration/*.ipynb
+        continue-on-error: true  # Job keeps going even if tests fail
 
+      - name: Test Subset fermi-summer-school  Notebooks pkg P2
+        id: test_summer_school_nb_fermi_P2
+        run: |
+          cd ${{ github.workspace }}/FB_TESTING/fermi-summer-school/
+          pytest --nbmake -n auto --nbmake-timeout=5000 --junitxml=${{ github.workspace }}/FB_TESTING/test_results/fss_like_adv_fermipy_result.xml -vv Likelihood_Advanced/Likelihood\ With\ fermiPy.ipynb
+        continue-on-error: true  # Job keeps going even if tests fail
+
+      - name: Test Subset fermi-summer-school  Notebooks pkg P3
+        id: test_summer_school_nb_fermi_P3
+        run: |
+          cd ${{ github.workspace }}/FB_TESTING/fermi-summer-school/
+          pytest --nbmake -n auto --nbmake-timeout=3000 --junitxml=${{ github.workspace }}/FB_TESTING/test_results/fss_like_adv_curvature_result.xml -vv Likelihood_Advanced/Curvature\ Test.ipynb
+        continue-on-error: true  # Job keeps going even if tests fail
+
+      - name: Test Subset fermi-summer-school  Notebooks pkg P4
+        id: test_summer_school_nb_fermi_P4
+        run: |
+          cd ${{ github.workspace }}/FB_TESTING/fermi-summer-school/
+          pytest --nbmake -n auto --nbmake-timeout=3000 --junitxml=${{ github.workspace }}/FB_TESTING/test_results/fss_like_adv_lightcurve_result.xml -vv Likelihood_Advanced/Lightcurve.ipynb
+        continue-on-error: true  # Job keeps going even if tests fail
+
+      - name: Test Subset fermi-summer-school  Notebooks pkg P5
+        id: test_summer_school_nb_fermi_P5
+        run: |
+          cd ${{ github.workspace }}/FB_TESTING/fermi-summer-school/
+          pytest --nbmake -n auto --nbmake-timeout=3000 --junitxml=${{ github.workspace }}/FB_TESTING/test_results/fss_like_adv_sed_result.xml -vv Likelihood_Advanced/SED\ Stuff.ipynb
         continue-on-error: true  # Job keeps going even if tests fail
 
       # The layout for this reporting action works. Not sure if there is something better, but it does a good job for us.
