@@ -1,0 +1,19 @@
+name: fermitools-alice-env
+channels:
+  - conda-forge
+  - fermi
+dependencies:
+  - python=3.12
+  - pip # Required to use the pip section below
+  - pytest
+  - junit-xml
+  - ipykernel
+  - pandas
+  - nb_conda_kernels
+  - "gammapy==2.1.*"
+  - healpy
+  - jupyter
+  - jupyter_server
+  - conda-forge::nbmake
+  - pip:
+      - pytest-xdist
