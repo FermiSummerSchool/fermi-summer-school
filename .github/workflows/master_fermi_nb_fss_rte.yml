@@ -1,0 +1,104 @@
+name: Master Fermi RTE Summer School NB testing
+on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+  schedule:
+    # Run only Friday morning starting at 5am EST
+    - cron: '0 5 * * 5'
+      timezone: 'America/New_York'
+
+jobs:
+  conda-ci:
+    runs-on: ${{ matrix.runner }}
+    name: "Master Fermi RTE Summer School NB Testing- ${{ matrix.pixi-platform }} "
+    defaults:
+      run:
+        shell: bash -l {0}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - pixi-platform: linux-64
+            runner: ubuntu-24.04
+          - pixi-platform: linux-aarch64
+            runner: ubuntu-24.04-arm
+          - pixi-platform: osx-64
+            runner: macos-15-intel
+          - pixi-platform: osx-arm64
+            runner: macos-15
+
+    steps:
+    # 1. Check out the source code
+    - name: Checkout repository
+      uses: actions/checkout@v6
+
+    - name: Checkout repo
+      uses: actions/checkout@v6
+      with:
+         ref: ${{github.ref_name}} #reset_checkout_fixes checkout_fixes master
+
+    - name: Conda environment creation and activation
+      uses: Wandalen/wretry.action@master
+      with:
+        action: conda-incubator/setup-miniconda@v4
+        with: |
+          conda-remove-defaults: true
+          python-version: 3.12.*
+          activate-environment: testing-jupyter
+          environment-file: environments/fermitools-testing-jupyter-nbs.yml
+          auto-update-conda: false
+          auto-activate: false
+          show-channel-urls: true
+        attempt_limit: 3
+        attempt_delay: 2000
+
+    - name: Run notebooks as tests with nbmake
+      id: run_jupyter_notebooks
+      continue-on-error: ${{ fromJSON(vars.CONTINUE_ON_ERROR || 'false') }}  # Default is to fail at first error
+      # Execute nbmake with pytest.
+      # The --nbmake flag tells pytest to look for notebooks.
+      # You can specify a directory like `notebooks/` or a pattern.
+      run: |
+        echo "Run tests testing-jupyter"
+        echo "TESTING BRANCH  ${{ github.ref_name }}"
+        # pip install git+https://github.com/fermiPy/fermipy.git
+        pip install fermipy
+        mkdir -p "${{ github.workspace }}/shared-testing/"
+        cd "${{ github.workspace }}/shared-testing/"
+        git clone "https://github.com/FermiSummerSchool/fermi-summer-school.git"
+        mkdir -p test_results
+
+        # Passed 07/17/26 3 hours to run:
+        wget https://fermi.gsfc.nasa.gov/ssc/data/analysis/scitools/data/SummerSchool/Likelihood_rxj1713.tgz
+        tar -xvf Likelihood_rxj1713.tgz
+        rm -f Likelihood_rxj1713.tgz
+        cd Likelihood_rxj1713/
+        pytest --nbmake -n auto --nbmake-timeout=6000 --junitxml=../test_results/ss_real_exe_rxj1713_result.xml -vv Realtime_execution_RXJ1713.ipynb
+        cd ../
+        wget https://fermi.gsfc.nasa.gov/ssc/data/analysis/scitools/data/SummerSchool/Likelihood_rcw103.tgz
+        tar -xvf Likelihood_rcw103.tgz
+        rm -f Likelihood_rcw103.tgz
+        cd Likelihood_rcw103/
+        pytest --nbmake -n auto --nbmake-timeout=6000 --junitxml=../test_results/ss_real_exe_rcw103_result.xml -vv Realtime_execution_RCW103.ipynb
+
+    # The layout for this reporting action works. Not sure if there is something better, but it does a good job for us.
+    - name: Publish Test Results Linux
+      uses: EnricoMi/publish-unit-test-result-action/linux@v2
+      if: runner.os == 'Linux'
+      with:
+        check_name: "Test Results: Conda Baseline ${{ matrix.runner }}"
+        files: |
+           ${{ github.workspace }}/shared-testing/test_results/*.xml
+
+    - name: Publish Test Results OSX
+      uses: EnricoMi/publish-unit-test-result-action/macos@v2
+      if: runner.os == 'macOS'
+      with:
+        check_name: "Test Results: Conda Baseline ${{ matrix.runner }}"
+        files: |
+           ${{ github.workspace }}/shared-testing/test_results/*.xml

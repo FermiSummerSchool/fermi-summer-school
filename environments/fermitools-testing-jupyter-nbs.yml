@@ -1,0 +1,25 @@
+name: fermitools-testing
+channels:
+  - conda-forge
+  - fermi/label/dev
+dependencies:
+  - python=3.12
+  - pmw
+  - healpy 
+  - gammapy 
+  - fermitools 
+  - fermi::fermitools-data
+  - fermi::fermitools-test-scripts-data
+  - numpy>2.0 # Update numpy from 1.26 to 2.x
+  - astropy<8.0.0
+  - scipy<1.18
+  - regions<0.12
+  - ipykernel
+  - pytest
+  - pytest-cov
+  - astropy
+  - junit-xml
+  - nbmake 
+  - nb_conda_kernels
+  - jupyterlab
+  - pytest-xdist
