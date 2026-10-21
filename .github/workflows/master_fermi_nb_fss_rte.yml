@@ -27,10 +27,10 @@ jobs:
             runner: ubuntu-24.04
           - pixi-platform: linux-aarch64
             runner: ubuntu-24.04-arm
-          - pixi-platform: osx-64
-            runner: macos-15-intel
           - pixi-platform: osx-arm64
             runner: macos-15
+          # - pixi-platform: osx-64
+          #  runner: macos-15-intel
 
     steps:
     # 1. Check out the source code

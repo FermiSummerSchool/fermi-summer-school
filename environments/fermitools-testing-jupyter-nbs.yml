@@ -10,10 +10,10 @@ dependencies:
   - fermitools 
   - fermi::fermitools-data
   - fermi::fermitools-test-scripts-data
-  - numpy>2.0 # Update numpy from 1.26 to 2.x
-  - astropy<8.0.0
-  - scipy<1.18
-  - regions<0.12
+  - "numpy>2.0" # Update numpy from 1.26 to 2.x
+  - "astropy<8.0.0"
+  - "scipy<1.18"
+  - "regions<0.12"
   - ipykernel
   - pytest
   - pytest-cov
