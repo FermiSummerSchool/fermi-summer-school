@@ -17,7 +17,6 @@ dependencies:
   - ipykernel
   - pytest
   - pytest-cov
-  - astropy
   - junit-xml
   - nbmake 
   - nb_conda_kernels

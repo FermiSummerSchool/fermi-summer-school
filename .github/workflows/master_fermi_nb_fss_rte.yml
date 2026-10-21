@@ -42,6 +42,11 @@ jobs:
       with:
          ref: ${{github.ref_name}} #reset_checkout_fixes checkout_fixes master
 
+
+    - name: Install LLVM libs for Mac
+      if: runner.os == 'macOS'
+      run: brew install llvm libomp
+
     - name: Conda environment creation and activation
       uses: Wandalen/wretry.action@master
       with:
